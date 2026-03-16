@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Generar código</title>
+<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+<h1>Generador de código</h1>
+
+<select id="lenguaje">
+
+<option>python</option>
+<option>javascript</option>
+
+</select>
+
+<button onclick="gen()">Generar</button>
+
+<pre id="codigo"></pre>
+
+<script>
+
+function gen(){
+
+let lenguaje=document.getElementById("lenguaje").value
+
+let code=""
+
+if(lenguaje=="python"){
+
+code="print('Hola mundo')"
+
+}
+
+if(lenguaje=="javascript"){
+
+code="console.log('Hola mundo')"
+
+}
+
+document.getElementById("codigo").innerText=code
+
+}
+
+</script>
+
+</body>
+
+</html>
