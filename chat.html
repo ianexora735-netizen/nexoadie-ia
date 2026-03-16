@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Chat IA</title>
+<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+<h1>Chat Nexoadie IA</h1>
+
+<input id="pregunta" placeholder="Pregunta algo">
+
+<button onclick="preguntar()">Enviar</button>
+
+<div id="respuesta"></div>
+
+<script>
+
+async function preguntar(){
+
+let pregunta=document.getElementById("pregunta").value
+
+let res=await fetch("https://api.openai.com/v1/chat/completions",{
+
+method:"POST",
+
+headers:{
+
+"Content-Type":"application/json",
+"Authorization":"Bearer TU_API_KEY"
+
+},
+
+body:JSON.stringify({
+
+model:"gpt-4o-mini",
+
+messages:[
+{role:"user",content:pregunta}
+]
+
+})
+
+})
+
+let data=await res.json()
+
+document.getElementById("respuesta").innerText=data.choices[0].message.content
+
+}
+
+</script>
+
+</body>
+</html>

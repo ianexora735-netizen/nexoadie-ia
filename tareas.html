@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Generar tareas</title>
+<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+<h1>Generador de tareas</h1>
+
+<input id="tema" placeholder="Tema">
+
+<button onclick="crear()">Crear</button>
+
+<div id="tarea"></div>
+
+<script>
+
+function crear(){
+
+let tema=document.getElementById("tema").value
+
+let texto=""
+
+texto+="<h2>"+tema+"</h2>"
+
+texto+="<p>Introducción</p>"
+texto+="<p>Desarrollo del tema</p>"
+texto+="<p>Conclusión</p>"
+
+document.getElementById("tarea").innerHTML=texto
+
+}
+
+</script>
+
+</body>
+
+</html>
