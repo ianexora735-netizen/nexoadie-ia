@@ -1,10 +1,101 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
 
+<meta charset="UTF-8">
 <title>Nexoadie IA</title>
-<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+color:white;
+text-align:center;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px;
+background:#00000080;
+}
+
+nav a{
+color:white;
+margin:15px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.hero{
+margin-top:100px;
+}
+
+.hero h1{
+font-size:60px;
+}
+
+input{
+padding:15px;
+width:300px;
+border-radius:30px;
+border:none;
+margin:10px;
+}
+
+button{
+padding:15px 25px;
+border:none;
+border-radius:30px;
+background:#00c6ff;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+.section{
+margin-top:120px;
+padding:40px;
+}
+
+.cards{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:30px;
+}
+
+.card{
+background:#ffffff10;
+padding:30px;
+border-radius:20px;
+width:250px;
+transition:0.3s;
+}
+
+.card:hover{
+transform:scale(1.05);
+background:#ffffff20;
+}
+
+footer{
+margin-top:150px;
+padding:30px;
+background:#00000080;
+}
+
+#chatbox{
+max-width:500px;
+margin:auto;
+background:#00000060;
+padding:20px;
+border-radius:20px;
+}
+
+</style>
 
 </head>
 
@@ -16,10 +107,9 @@
 
 <nav>
 
-<a href="index.html">Inicio</a>
-<a href="pages/chat.html">Chat IA</a>
-<a href="pages/tareas.html">Crear tareas</a>
-<a href="pages/codigo.html">Generar código</a>
+<a href="#">Inicio</a>
+<a href="#herramientas">Herramientas</a>
+<a href="#chat">Chat IA</a>
 
 </nav>
 
@@ -29,11 +119,78 @@
 
 <h1>NEXOADIE IA</h1>
 
-<p>IA educativa para estudiantes</p>
+<p>Plataforma inteligente para aprender, programar y crear</p>
 
-<input id="buscar" placeholder="Buscar en internet">
+<input id="buscar" placeholder="Buscar información">
 
 <button onclick="buscar()">Buscar</button>
+
+</section>
+
+<section class="section" id="herramientas">
+
+<h2>Herramientas Inteligentes</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>Generar tareas</h3>
+
+<input id="tema" placeholder="Tema">
+
+<button onclick="tarea()">Crear</button>
+
+<div id="tarea"></div>
+
+</div>
+
+<div class="card">
+
+<h3>Generar código</h3>
+
+<select id="lenguaje">
+
+<option value="python">Python</option>
+<option value="javascript">JavaScript</option>
+
+</select>
+
+<button onclick="codigo()">Generar</button>
+
+<pre id="codigo"></pre>
+
+</div>
+
+<div class="card">
+
+<h3>Resolver matemáticas</h3>
+
+<input id="ecuacion" placeholder="Ej: 5*10+2">
+
+<button onclick="resolver()">Resolver</button>
+
+<div id="resultado"></div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section" id="chat">
+
+<h2>Chat Nexoadie IA</h2>
+
+<div id="chatbox">
+
+<input id="pregunta" placeholder="Pregunta algo">
+
+<button onclick="chat()">Enviar</button>
+
+<div id="respuesta"></div>
+
+</div>
 
 </section>
 
@@ -41,9 +198,76 @@
 
 <p>Fundador: Jesus A</p>
 
+<p>Nexoadie IA - Proyecto tecnológico</p>
+
 </footer>
 
-<script src="js/app.js"></script>
+<script>
+
+function buscar(){
+
+let q=document.getElementById("buscar").value
+
+window.open("https://www.google.com/search?q="+q)
+
+}
+
+function tarea(){
+
+let tema=document.getElementById("tema").value
+
+document.getElementById("tarea").innerHTML=
+"<p><b>"+tema+"</b>: definición, características, ejemplos y conclusión.</p>"
+
+}
+
+function codigo(){
+
+let l=document.getElementById("lenguaje").value
+
+let c=""
+
+if(l=="python"){
+c="print('Hola desde Nexoadie IA')"
+}
+
+if(l=="javascript"){
+c="console.log('Hola desde Nexoadie IA')"
+}
+
+document.getElementById("codigo").innerText=c
+
+}
+
+function resolver(){
+
+let e=document.getElementById("ecuacion").value
+
+try{
+
+let r=eval(e)
+
+document.getElementById("resultado").innerHTML=r
+
+}catch{
+
+document.getElementById("resultado").innerHTML="Error"
+
+}
+
+}
+
+function chat(){
+
+let p=document.getElementById("pregunta").value
+
+let r="Estoy analizando tu pregunta sobre: "+p
+
+document.getElementById("respuesta").innerHTML=r
+
+}
+
+</script>
 
 </body>
 </html>
